@@ -1,0 +1,14 @@
+name: opspilot-ci
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: pip install -r requirements-dev.txt
+      - run: python scripts/package_lambda.py
+      - run: pytest -q
+      - run: ruff check app infra tests scripts
+      - run: cdk synth -c slack_secret_arn=arn:aws:secretsmanager:us-east-1:000000000000:secret:ci -c approver_user_ids=UCI

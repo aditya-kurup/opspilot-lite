@@ -12,6 +12,7 @@ from app import audit, llm
 from app.config import approvers
 from app.executor import create_bucket
 from app.parser import parse_request
+from app.integrations import create_servicenow_record, trigger_jenkins
 
 logger = logging.getLogger(__name__)
 
@@ -86,6 +87,9 @@ def process_request(payload: dict, client=None) -> None:
         }
         audit.save_request(item)
         audit.record(request_id, requester, "create_s3_bucket", parsed.model_dump(), "pending")
+        service_now_id = create_servicenow_record(item)
+        if service_now_id:
+            audit.update_fields(request_id, "pending", servicenow_id=service_now_id)
         client.chat_postMessage(
             channel=channel,
             text=f"Approval requested for {parsed.name}",
@@ -125,6 +129,10 @@ def decide(request_id: str, actor: str, decision: str, client, channel: str) -> 
     if not audit.transition(request_id, "pending", "executing", decided_by=actor):
         return "This request has already been handled."
     audit.record(request_id, actor, item["action"], item, "executing")
+    try:
+        trigger_jenkins(request_id)
+    except Exception:
+        logger.exception("Jenkins trigger failed for %s", request_id)
     try:
         result = create_bucket(item)
     except Exception as exc:
