@@ -1,0 +1,74 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage[margin=0.45in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{microtype}
+
+\definecolor{navy}{HTML}{17324D}
+\definecolor{blue}{HTML}{236A8A}
+\definecolor{gray}{HTML}{4B5563}
+\definecolor{rule}{HTML}{D6E3EA}
+\hypersetup{colorlinks=true,urlcolor=blue,linkcolor=blue}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlist[itemize]{leftmargin=14pt,itemsep=0.5pt,topsep=1pt,parsep=0pt}
+\titleformat{\section}{\color{navy}\bfseries\fontsize{9.4}{11}\selectfont}{}{0pt}{}[\vspace{-3pt}\color{rule}\rule{\linewidth}{0.5pt}]
+\titlespacing*{\section}{0pt}{4pt}{2pt}
+
+\newcommand{\resumeRole}[2]{\textbf{#1}\hfill{\color{gray}#2}\\[-1pt]}
+\newcommand{\resumeBullet}[1]{\item \small #1}
+
+\begin{document}
+\begin{center}
+  {\color{navy}\fontsize{19}{21}\selectfont\textbf{Aditya Kurup}}\\[2pt]
+  \small Bengaluru, India \textbar\; \href{mailto:adityakurup05@gmail.com}{adityakurup05@gmail.com} \textbar\; +91 8779642950 \textbar\; \href{https://linkedin.com/in/aditya-kurup}{LinkedIn} \textbar\; \href{https://github.com/aditya-kurup}{GitHub}
+\end{center}
+
+\section*{ABOUT}
+Computer Science (AI) undergraduate building practical automation with Python, LLMs, AWS, and Slack applications. Experienced in schema-validated model workflows, evaluation, secure approval gates, and reproducible testing. I learn unfamiliar systems quickly, communicate technical tradeoffs clearly, and own reliable deliverables from design through verification.
+
+\section*{EDUCATION}
+\textbf{Manipal Institute of Technology}, Bengaluru, India \hfill {\color{gray}B.Tech in Computer Science (AI), Minor in Quantum Computing \	extbar\; 2023--2027}\\[-1pt]
+\small \textbf{CGPA:} 8.47/10 \textbar\; \textbf{Coursework:} Machine Learning, DevOps, Operating Systems, Computer Networks, Data Structures and Algorithms, DBMS, Probability, Statistics, Linear Algebra
+
+\section*{EXPERIENCE}
+\resumeRole{AI Intern, Zino Technologies -- Bengaluru, Karnataka}{Jun 2025 -- Jul 2025}
+\begin{itemize}
+  \resumeBullet{Built Go backend scripts and implemented LLM workflows that converted free-form product descriptions into schema-validated JSON for a low-code B2B SaaS platform, rejecting malformed generations before downstream code generation.}
+  \resumeBullet{Wrote an evaluation harness comparing prompt variants and foundation models on output validity and schema conformance; used data-driven results to select the shipped workflow.}
+\end{itemize}
+\resumeRole{Research Intern, Qomputing.ai -- Bengaluru, Karnataka}{Mar 2026 -- Apr 2026}
+\begin{itemize}
+  \resumeBullet{Developed agentic workflows and Python/JavaScript backend services, alongside Python simulation backends for statevector execution that step circuits through gate sequences.}
+  \resumeBullet{Profiled batched numerical workloads, located bottlenecks in per-gate update loops, and restructured hot paths to improve throughput.}
+\end{itemize}
+
+\section*{PROJECTS}
+\resumeRole{OpsPilot Lite -- Approval-Gated AWS Provisioning}{\href{https://github.com/aditya-kurup/opspilot-lite}{GitHub} \textbar\; Python, Slack Bolt, DeepSeek, boto3, AWS CDK}
+\begin{itemize}
+  \resumeBullet{Built a working Slack workflow that converts natural-language requests into strict JSON plans, validates them with Pydantic, and requires approval from a separate allowlisted user.}
+  \resumeBullet{Implemented an allowlisted boto3 S3 executor with dry-run mode, encryption, public-access blocking, TTL and ownership tags, audit logging, duplicate prevention, and expired empty-bucket cleanup.}
+  \resumeBullet{Added CDK infrastructure for Lambda, API Gateway, SQS, DynamoDB, EventBridge, and Secrets Manager; verified the local Slack-to-LLM-to-approval flow end to end.}
+\end{itemize}
+\resumeRole{Policy-Gated Growth Agent}{\href{https://github.com/aditya-kurup}{GitHub} \textbar\; Python, Gemini API, Razorpay API}
+\begin{itemize}
+  \resumeBullet{Designed deterministic policy and atomic reservation layers so model output could propose offers but never make money-affecting decisions; validated 629 oracle cases and stress-tested 5,000 concurrent attempts with zero overdraws.}
+\end{itemize}
+\resumeRole{LLM Self-Correction Reliability Study}{\href{https://github.com/aditya-kurup}{GitHub} \textbar\; Python, Pandas, NumPy, Scikit-learn, SQL}
+\begin{itemize}
+  \resumeBullet{Built a reproducible evaluation pipeline covering 5,760 test events across four models and trained a question-grouped logistic gate that improved pooled accuracy by 2.59 percentage points over baseline.}
+\end{itemize}
+
+\section*{TECHNICAL SKILLS}
+\small \textbf{Languages:} Python, Go, C, Java, SQL, JavaScript \textbar\; \textbf{AI/ML:} LLM APIs, prompt evaluation, schema validation, RAG, Scikit-learn, TensorFlow, PyTorch, NumPy, Pandas \textbar\; \textbf{Cloud and Automation:} AWS (S3, Lambda, DynamoDB, EventBridge), AWS CDK, Slack Apps, REST APIs, Git, Linux \textbar\; \textbf{Exposure:} Jenkins, ServiceNow workflows, infrastructure as code, cloud security, Agile/Scrum
+
+\vfill
+\color{gray}\rule{\linewidth}{0.4pt}\\[-1pt]
+\scriptsize Aditya Kurup \hfill AI Engineering \textbar\; Cloud Automation \hfill 1
+\end{document}
