@@ -1,0 +1,6 @@
+{
+  "display_information": {"name": "OpsPilot Lite", "description": "Approve temporary AWS provisioning", "background_color": "#172c45"},
+  "features": {"bot_user": {"display_name": "OpsPilot Lite", "always_online": false}, "slash_commands": [{"command": "/provision", "description": "Request a temporary development S3 bucket", "usage_hint": "create a dev bucket named demo for 2 hours", "should_escape": false}]},
+  "oauth_config": {"scopes": {"bot": ["commands", "chat:write"]}},
+  "settings": {"interactivity": {"is_enabled": true}, "socket_mode_enabled": true, "token_rotation_enabled": false}
+}
